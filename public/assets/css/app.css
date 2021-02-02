@@ -1,0 +1,78 @@
+:root {
+  --light-background: #eceff1;
+  --light-color: rgba(0, 0, 0, 0.6);
+
+  --light-accent-back: #ffffff;
+  --light-accent-color: #ffffff;
+
+  --light-text-accent: #878787;
+
+  --dark-title-background: #2c3e50;
+  --dark-body-background: #34495e;
+
+  --dark-color: #eceff1;
+  --dark-text: #ffffff;
+
+  --background: var(--dark-body-background);
+  --color: var(--light-color);
+
+  --accent-background: var(--light-accent-back);
+  --accent-color: var(--light-accent-color);
+  --accent-text: var(--light-text-accent);
+
+  --primary: #e67e22;
+  --primary-plus: #d35400;
+}
+
+.app-background {
+  background: var(--background);
+}
+
+.app-color {
+  color: var(--color);
+}
+
+.nav-color {
+  background: var(--dark-title-background) !important;
+  color: var(--dark-text) !important;
+}
+
+.item-color {
+  color: var(--dark-text) !important;
+}
+
+.signup-back {
+  background: var(--dark-body-background);
+}
+
+.title-signup-back {
+  background: var(--dark-title-background);
+}
+
+.light-text {
+  color: var(--light-background);
+}
+
+.light-text-plus {
+  color: #ffffff;
+}
+
+.no-border-bottom {
+  border-bottom: none !important;
+}
+
+.sign-input {
+  color: #ededed;
+  background-color: var(--dark-title-background);
+  background-clip: padding-box;
+  border: none;
+}
+
+input.sign-input:focus,
+input.sign-input:active {
+  color: #ffffff;
+  background-color: var(--dark-title-background) !important;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.25rem rgb(25 25 64 / 25%);
+  box-shadow: 0 0 0 0.25rem rgb(25 25 64 / 25%);
+}
