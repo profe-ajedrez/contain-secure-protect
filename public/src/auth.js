@@ -14,7 +14,7 @@
       const signupMail = document.getElementById("signup-mail");
       const signupPass = document.getElementById("signup-pass");
 
-      app.authSystem
+      application.authSystem
         .createUserWithEmailAndPassword(signupMail.value, signupPass.value)
         .then((usercredential) => {
           console.log("sign up");
@@ -35,7 +35,7 @@
       const signinMail = document.getElementById("signin-mail");
       const signinPass = document.getElementById("signin-pass");
 
-      app.authSystem
+      application.authSystem
         .signInWithEmailAndPassword(signinMail.value, signinPass.value)
         .then((usercredential) => {
           console.log("signed in");
@@ -59,11 +59,11 @@
         login_hint: "user@example.com",
       });
 
-      app.authSystem.useDeviceLanguage();
-      app.authSystem.signInWithRedirect(gProvider);
+      application.authSystem.useDeviceLanguage();
+      application.authSystem.signInWithRedirect(gProvider);
     });
 
-    app.authSystem
+    application.authSystem
       .getRedirectResult()
       .then((result) => {
         if (result.credential) {
@@ -93,7 +93,7 @@
     /* Logout */
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      app.authSystem.signOut().then(() => {
+      application.authSystem.signOut().then(() => {
         console.log("loged out");
       });
     });
