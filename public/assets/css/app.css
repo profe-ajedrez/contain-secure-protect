@@ -7,6 +7,7 @@
 
   --light-text-accent: #878787;
 
+  --darker-title-background: #2a3b47;
   --dark-title-background: #2c3e50;
   --dark-body-background: #34495e;
 
@@ -22,6 +23,10 @@
 
   --primary: #e67e22;
   --primary-plus: #d35400;
+}
+
+.dark-color {
+  color: var(--dark-title-background);
 }
 
 .app-background {
@@ -75,4 +80,84 @@ input.sign-input:active {
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.25rem rgb(25 25 64 / 25%);
   box-shadow: 0 0 0 0.25rem rgb(25 25 64 / 25%);
+}
+
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 45;
+  left: 0;
+  background-color: var(--dark-title-background); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
+
+#openbtn {
+  color: #818181;
+}
+
+#openbtn:hover {
+  color: #f1f1f1;
+}
+
+#sidenav-container {
+  list-style-type: none;
 }

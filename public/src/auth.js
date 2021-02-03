@@ -2,6 +2,41 @@
 
 (function () {
 
+
+  function updateAppState() {
+    switch (application.state) {
+      case states.OUT:
+        application.ui.nav.signupLink.style.display = 'block';
+        application.ui.nav.signinLink.style.display = 'block';
+        application.ui.nav.logout.style.display = 'none';
+        application.ui.nav.openbtn.style.display = 'none';
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        break;
+      case states.IN:
+        application.ui.nav.signupLink.style.display = 'none';
+        application.ui.nav.signinLink.style.display = 'none';
+        application.ui.nav.logout.style.display = 'block';
+        application.ui.nav.openbtn.style.display = 'block';
+        document.getElementById("openbtn").style.display = "none";
+        document.getElementById("mySidebar").style.width = "18rem";
+        document.getElementById("main").style.marginLeft = "18rem";
+        break;
+    }
+
+  }
+
+
+  function onLoginSuccess() {
+    application.state = states.IN;
+    updateAppState();
+  }
+
+  function onLogoutSuccess() {
+    application.state = states.OUT;
+    updateAppState();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const signupform = document.getElementById("signup-form"),
       signinform = document.getElementById("signin-form"),
@@ -41,11 +76,13 @@
           console.log("signed in");
           signinform.reset();
           const modal = document.getElementById("signinmodal");
-          const bsModal = mdb.Modal.getInstance(modal);
+          const bsModal = bootstrap.Modal.getInstance(modal);
           bsModal.hide();
+          onLoginSuccess();
         })
         .catch((err) => {
           console.log(err);
+          onLogoutSuccess();
         });
     });
 
@@ -76,6 +113,7 @@
           // The signed-in user info.
           var user = result.user;
           console.log("signed in with google");
+          onLoginSuccess();
         }
       })
       .catch((error) => {
@@ -88,6 +126,7 @@
         var credential = error.credential;
         // ...
         console.log(error);
+        onLogoutSuccess();
       });
 
     /* Logout */
@@ -95,7 +134,20 @@
       e.preventDefault();
       application.authSystem.signOut().then(() => {
         console.log("loged out");
+        onLogoutSuccess();
       });
+    });
+
+
+
+    application.authSystem.onAuthStateChanged(function (user) {
+      if (user) {
+        onLoginSuccess();
+        application.user = user;
+      } else {
+        onLogoutSuccess();
+        application.user = null;
+      }
     });
 
   });
